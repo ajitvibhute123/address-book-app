@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.2</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bridgelabz</groupId>
-	<artifactId>AddressBookAppl</artifactId>
+	<artifactId>addressbookapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AddressBookAppl</name>
-	<description>Address Book  App Backend</description>
+	<name>AddressBookApp</name>
+	<description>Address book project of Spring Boot backend</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -46,15 +46,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.24</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
 	</build>
 
 </project>

@@ -2,9 +2,9 @@ package com.bridgelabz.addressbookapp.dto;
 
 public class AddressBookDTO {
     public String name;
-    public long phNumber;
+    public String phNumber;
 
-    public AddressBookDTO(String name, long phNumber) {
+    public AddressBookDTO(String name, String phNumber) {
         this.name = name;
         this.phNumber = phNumber;
     }
