@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/addressbookapp")
 public class AddressBookController {
-    /* S2-UC-2-Introducing Service Layer in AddressBook App */
+    /* S2-UC-3-Ability for the Services Layer to store the AddressBook Data - Note that Services Layer is not storing, updating */
     @Autowired
     IAddressBookService addressbookService;
 
