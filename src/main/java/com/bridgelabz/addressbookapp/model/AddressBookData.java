@@ -16,6 +16,7 @@ public @Data class AddressBookData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "person_Id")
     private int personId;
+
     private String name;
     private String phoneNumber;
     private String address;
@@ -29,9 +30,7 @@ public @Data class AddressBookData {
 
     }
 
-    public AddressBookData(AddressBookDTO addressbookDTO) {}
-
-    public void updateAddressBookdata(AddressBookDTO addressbookDTO) {
+    public AddressBookData(AddressBookDTO addressbookDTO) {
         this.name = addressbookDTO.name;
         this.phoneNumber = addressbookDTO.phoneNumber;
         this.address = addressbookDTO.address;
@@ -39,5 +38,9 @@ public @Data class AddressBookData {
         this.state = addressbookDTO.state;
         this.zip = addressbookDTO.zip;
         this.email = addressbookDTO.email;
+    }
+
+    public void updateAddressBookdata(AddressBookDTO addressbookDTO) {
+
     }
 }
