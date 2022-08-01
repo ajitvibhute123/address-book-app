@@ -3,13 +3,20 @@ package com.bridgelabz.addressbookapp.services;
 import com.bridgelabz.addressbookapp.dto.AddressBookDTO;
 import com.bridgelabz.addressbookapp.exceptions.AddressBookException;
 import com.bridgelabz.addressbookapp.model.AddressBookData;
+import com.bridgelabz.addressbookapp.repository.AddressBookRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class AddressBookService implements IAddressBookService {
+
+    @Autowired
+    private AddressBookRepository addressbookRepository;
 
     List<AddressBookData> addressbookDataList = new ArrayList<>();
 
@@ -30,25 +37,21 @@ public class AddressBookService implements IAddressBookService {
     public AddressBookData createAddressBookData(AddressBookDTO addressbookDTO) {
         AddressBookData addressbookData = null;
         addressbookData = new AddressBookData(addressbookDataList.size() + 1, addressbookDTO);
+        log.debug("AddressBookData: "+addressbookData.toString());
         addressbookDataList.add(addressbookData);
-        return addressbookData;
+        return addressbookRepository.save(addressbookData);
     }
 
     @Override
     public AddressBookData updateAddressBookData(int personId, AddressBookDTO addressbookDTO) {
         AddressBookData addressbookData = this.getAddressBookDataById(personId);
-        addressbookData.setName(addressbookDTO.name);
-        addressbookData.setPhoneNumber(addressbookDTO.phoneNumber);
+        addressbookData.updateAddressBookdata(addressbookDTO);
         addressbookDataList.set(personId - 1, addressbookData);
         return addressbookData;
     }
 
     @Override
     public void deleteAddressBookData(int personId) {
-        int i = 1;
         addressbookDataList.remove(personId - 1);
-        for (AddressBookData addressbookData : addressbookDataList) {
-            addressbookData.setPersonId(i++);
         }
-    }
 }
