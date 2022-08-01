@@ -59,4 +59,59 @@ public class AddressBookController {
         ResponseDTO responseDTO = new ResponseDTO("Deleted data successfully","person id: "+personId);
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
     }
+    @GetMapping("/sortByCity")
+    public ResponseEntity<ResponseDTO> sortAddressBookByCity(){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.sortAddressBookByCity();
+        ResponseDTO responseDTO = new ResponseDTO("sort AddressBook By City Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/getByCity/{city}")
+    public ResponseEntity<ResponseDTO> getAddressBookByCity(@PathVariable String city){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.getAddressBookByCity(city);
+        ResponseDTO responseDTO = new ResponseDTO("Get AddressBook By City Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/sortByState")
+    public ResponseEntity<ResponseDTO> sortAddressBookByState(){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.sortAddressBookByState();
+        ResponseDTO responseDTO = new ResponseDTO("sort AddressBook By State Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/getByState/{state}")
+    public ResponseEntity<ResponseDTO> getAddressBookByState(@PathVariable String state){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.getAddressBookByState(state);
+        ResponseDTO responseDTO = new ResponseDTO("Get AddressBook By State Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/sortByZip")
+    public ResponseEntity<ResponseDTO> sortAddressBookByZip(){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.sortAddressBookByZip();
+        ResponseDTO responseDTO = new ResponseDTO("sort AddressBook By Zip Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/getByZip/{zip}")
+    public ResponseEntity<ResponseDTO> getAddressBookByZip(@PathVariable String zip){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.getAddressBookByZip(zip);
+        ResponseDTO responseDTO = new ResponseDTO("Get AddressBook By Zip Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/sortByName")
+    public ResponseEntity<ResponseDTO> sortAddressBookByName(){
+        List<AddressBookData> addressbookDataList = null;
+        addressbookDataList = addressbookService.sortAddressBookByName();
+        ResponseDTO responseDTO = new ResponseDTO("sort AddressBook By Name Success",addressbookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
 }

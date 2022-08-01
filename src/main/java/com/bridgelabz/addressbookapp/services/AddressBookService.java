@@ -51,4 +51,39 @@ public class AddressBookService implements IAddressBookService {
         AddressBookData addressbookData = this.getAddressBookDataById(personId);
         addressbookRepository.delete(addressbookData);
     }
+    @Override
+    public List<AddressBookData> sortAddressBookByCity() {
+        return addressbookRepository.sortByCity();
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookByCity(String city) {
+        return addressbookRepository.findAllByCity(city);
+    }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByState() {
+        return addressbookRepository.sortByState();
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookByState(String state) {
+        return addressbookRepository.findAllByState(state);
+    }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByZip() {
+        return addressbookRepository.sortByZip();
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookByZip(String zip) {
+        return addressbookRepository.findAllByZip(zip);
+    }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByName() {
+        return addressbookRepository.sortByName();
+    }
+
 }
