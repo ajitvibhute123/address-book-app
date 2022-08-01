@@ -8,6 +8,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public @ToString class AddressBookDTO {
+
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$", message = "Address-book name is Invalid")
     @NotEmpty(message = "Address-book name cannot be null")
     public String name;
