@@ -5,6 +5,8 @@ import com.bridgelabz.addressbookapp.exceptions.AddressBookException;
 import com.bridgelabz.addressbookapp.model.AddressBookData;
 import com.bridgelabz.addressbookapp.repository.AddressBookRepository;
 import lombok.extern.slf4j.Slf4j;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ import java.util.List;
 @Service
 @Slf4j
 public class AddressBookService implements IAddressBookService {
+	
+	@Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private AddressBookRepository addressbookRepository;
@@ -32,17 +37,18 @@ public class AddressBookService implements IAddressBookService {
     }
 
     @Override
-    public AddressBookData createAddressBookData(AddressBookDTO addressbookDTO) {
-        AddressBookData addressbookData = null;
-        addressbookData = new AddressBookData (addressbookDTO);
-        log.debug("AddressBookData: "+addressbookData.toString());
-        return addressbookRepository.save(addressbookData);
+   public AddressBookData createAddressBookData(AddressBookDTO addressbookDTO){
+     
+    	AddressBookData addressBookData = modelMapper.map(addressbookDTO, AddressBookData.class);
+        log.debug("AddressBookData: "+addressBookData.toString());
+        return addressbookRepository.save(addressBookData);
     }
 
     @Override
     public AddressBookData updateAddressBookData(int personId, AddressBookDTO addressbookDTO) {
         AddressBookData addressbookData = this.getAddressBookDataById(personId);
-        addressbookData.updateAddressBookdata(addressbookDTO);
+        //addressbookData.updateAddressBookdata(addressbookDTO);
+        modelMapper.map(addressbookDTO, addressbookData);
         return addressbookRepository.save(addressbookData);
     }
 

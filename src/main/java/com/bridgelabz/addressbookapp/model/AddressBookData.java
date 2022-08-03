@@ -10,7 +10,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name ="contact_details")
-public @Data class AddressBookData {
+@Data
+public  class AddressBookData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,23 +25,8 @@ public @Data class AddressBookData {
     private String state;
     private String zip;
     private String email;
-
-    public AddressBookData(int personId, AddressBookDTO addressbookDTO) {
-        this.updateAddressBookdata(addressbookDTO);
-
-    }
-
-    public AddressBookData(AddressBookDTO addressbookDTO) {
-        this.name = addressbookDTO.name;
-        this.phoneNumber = addressbookDTO.phoneNumber;
-        this.address = addressbookDTO.address;
-        this.city = addressbookDTO.city;
-        this.state = addressbookDTO.state;
-        this.zip = addressbookDTO.zip;
-        this.email = addressbookDTO.email;
-    }
-
-    public void updateAddressBookdata(AddressBookDTO addressbookDTO) {
-
-    }
+    
+	
+   
+  
 }
